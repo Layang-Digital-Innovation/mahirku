@@ -6,6 +6,7 @@ import { Input } from '../../components/ui/Input';
 import { Card, CardHeader, CardContent } from '../../components/ui/Card';
 import { useAuth } from '../../hooks/useAuth';
 import { getReferralId } from '../../utils/referral';
+import mahirkuLogo from '../../assets/logo_mahirku.png';
 
 export const Register: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ export const Register: React.FC = () => {
       <div className="max-w-md w-full">
         <Card>
           <CardHeader className="text-center">
-            <Brain className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+           <img src={mahirkuLogo} className="mx-auto h-32 w-auto" alt="" />
             <h2 className="text-3xl font-bold text-gray-900">Join Mahirku</h2>
             <p className="text-gray-600">Create your account to get started</p>
           </CardHeader>

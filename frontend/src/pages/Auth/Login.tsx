@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Card, CardHeader, CardContent } from '../../components/ui/Card';
 import { useAuth } from '../../hooks/useAuth';
+import mahirkuLogo from '../../assets/logo_mahirku.png';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ export const Login: React.FC = () => {
       <div className="max-w-md w-full">
         <Card>
           <CardHeader className="text-center">
-            <Brain className="h-12 w-12 text-blue-600 mx-auto mb-4" />
+            <img src={mahirkuLogo} className="w-32 mx-auto mb-4" alt="" />
             <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
             <p className="text-gray-600">Sign in to your Mahirku account</p>
           </CardHeader>
