@@ -1,8 +1,9 @@
-import React from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { Brain, User, LogOut, Home, Shield } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
-import { Button } from './ui/Button';
+import React from "react";
+import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Brain, User, LogOut, Home, Shield } from "lucide-react";
+import { useAuth } from "../hooks/useAuth";
+import { Button } from "./ui/Button";
+import mahirkuLogo from "../assets/logo_mahirku.png";
 
 export const Layout: React.FC = () => {
   const { user, loading, logout } = useAuth();
@@ -11,41 +12,41 @@ export const Layout: React.FC = () => {
   const handleLogout = async () => {
     try {
       await logout();
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
 
   const getDashboardLink = () => {
-    if (!user) return '/';
-    
+    if (!user) return "/";
+
     switch (user.role) {
-      case 'super_admin':
-        return '/admin/dashboard';
-      case 'affiliator':
-        return '/affiliator/dashboard';
+      case "super_admin":
+        return "/admin/dashboard";
+      case "affiliator":
+        return "/affiliator/dashboard";
       default:
-        return '/user/dashboard';
+        return "/user/dashboard";
     }
   };
 
   const getRoleColor = (role: string) => {
     switch (role) {
-      case 'super_admin':
-        return 'bg-red-100 text-red-800';
-      case 'affiliator':
-        return 'bg-green-100 text-green-800';
+      case "super_admin":
+        return "bg-red-100 text-red-800";
+      case "affiliator":
+        return "bg-green-100 text-green-800";
       default:
-        return 'bg-blue-100 text-blue-800';
+        return "bg-blue-100 text-blue-800";
     }
   };
 
   const getRoleIcon = (role: string) => {
     switch (role) {
-      case 'super_admin':
+      case "super_admin":
         return Shield;
-      case 'affiliator':
+      case "affiliator":
         return User;
       default:
         return User;
@@ -66,10 +67,10 @@ export const Layout: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-2">
-              <Brain className="h-8 w-8 text-blue-600" />
-              <span className="text-xl font-bold text-gray-900">Mahirku</span>
+              <img src={mahirkuLogo} className="h-12 w-12 object-cover" alt="" />
+              <span className="text-2xl font-bold text-blue-600">Mahirku</span>
             </Link>
-            
+
             <div className="flex items-center space-x-4">
               {user ? (
                 <>
@@ -81,21 +82,34 @@ export const Layout: React.FC = () => {
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     {React.createElement(getRoleIcon(user.role), { size: 16 })}
                     <span>{user.email}</span>
-                    <span className={`px-2 py-1 rounded-full text-xs ${getRoleColor(user.role)}`}>
-                      {user.role === 'super_admin' ? 'Super Admin' : user.role}
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs ${getRoleColor(
+                        user.role
+                      )}`}
+                    >
+                      {user.role === "super_admin" ? "Super Admin" : user.role}
                     </span>
                   </div>
-                  <Button variant="ghost" icon={LogOut} size="sm" onClick={handleLogout}>
+                  <Button
+                    variant="ghost"
+                    icon={LogOut}
+                    size="sm"
+                    onClick={handleLogout}
+                  >
                     Logout
                   </Button>
                 </>
               ) : (
                 <div className="space-x-2">
                   <Link to="/login">
-                    <Button variant="outline" size="sm">Login</Button>
+                    <Button variant="outline" size="sm">
+                      Login
+                    </Button>
                   </Link>
                   <Link to="/register">
-                    <Button variant="primary" size="sm">Register</Button>
+                    <Button variant="primary" size="sm">
+                      Register
+                    </Button>
                   </Link>
                 </div>
               )}
@@ -103,7 +117,7 @@ export const Layout: React.FC = () => {
           </div>
         </div>
       </nav>
-      
+
       <main>
         <Outlet />
       </main>

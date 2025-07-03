@@ -4,6 +4,7 @@ import { Brain, TrendingUp, Shield, Zap, Eye } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { Card, CardContent } from '../components/ui/Card';
 import { getReferralId } from '../utils/referral';
+import mahirkuLogo from '../assets/logo_mahirku.png';
 
 export const Landing: React.FC = () => {
   useEffect(() => {
@@ -41,7 +42,7 @@ export const Landing: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex justify-center mb-6">
-              <Brain className="h-20 w-20 text-blue-300" />
+              <img src={mahirkuLogo} alt="Mahirku Logo" className="h-20 w-20" />
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
               Discover Your
